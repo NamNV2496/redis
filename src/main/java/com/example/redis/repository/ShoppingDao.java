@@ -40,12 +40,9 @@ public class ShoppingDao {
 
 
     private final String hashReference= "Employee";
-    private final String hashReference1= "int";
 
     @Resource(name="redisTemplate")          // 'redisTemplate' is defined as a Bean in AppConfig.java
     private HashOperations<String, Integer, Shopping> hashOperations;
-
-    private HashOperations<String, Integer> hashOperationsInt;
 
     public void saveEmployee(Shopping emp) {
         hashOperations.putIfAbsent(hashReference, emp.getId(), emp);
