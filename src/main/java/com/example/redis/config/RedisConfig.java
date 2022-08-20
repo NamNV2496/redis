@@ -21,34 +21,29 @@ public class RedisConfig {
     private int redisPort;
 
 // way 1: use jedis
-//    @Bean
-//    JedisConnectionFactory jedisConnectionFactory() {
-//        JedisConnectionFactory jedisConFactory
-//                = new JedisConnectionFactory();
-//        jedisConFactory.setHostName(redisHost);
-//        jedisConFactory.setPort(redisPort);
-//        return jedisConFactory;
-//    }
-//
-//    @Bean
-//    @Primary
-//    public RedisTemplate<String, Object> redisTemplate() {
-//        RedisTemplate<String, Object> template = new RedisTemplate<>();
-//        template.setConnectionFactory(jedisConnectionFactory());
-//        return template;
-//    }
+    @Bean
+    JedisConnectionFactory jedisConnectionFactory() {
+        return new JedisConnectionFactory();
+    }
+
+    @Bean
+    public RedisTemplate<String, Object> redisTemplate() {
+        RedisTemplate<String, Object> template = new RedisTemplate<>();
+        template.setConnectionFactory(jedisConnectionFactory());
+        return template;
+    }
 
 // way 2: use lettuce
-    @Bean
-    public RedisConnectionFactory redisConnectionFactory() {
-    return new LettuceConnectionFactory();
-}
-    @Bean
-    @Primary
-    public RedisTemplate<String, Shopping> redisTemplate(){
-        RedisTemplate<String, Shopping> empTemplate = new RedisTemplate<>();
-        empTemplate.setConnectionFactory(redisConnectionFactory());
-        return empTemplate;
-    }
+//    @Bean
+//    public RedisConnectionFactory redisConnectionFactory() {
+//    return new LettuceConnectionFactory();
+//}
+//    @Bean
+//    @Primary
+//    public RedisTemplate<String, Shopping> redisTemplate(){
+//        RedisTemplate<String, Shopping> empTemplate = new RedisTemplate<>();
+//        empTemplate.setConnectionFactory(redisConnectionFactory());
+//        return empTemplate;
+//    }
 }
 

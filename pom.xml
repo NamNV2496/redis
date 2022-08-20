@@ -32,6 +32,18 @@
             <optional>true</optional>
         </dependency>
 
+<!--         only add on way 1-->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <type>jar</type>
+        </dependency>
+<!--         end only add on way 1-->
+
     </dependencies>
 
     <build>
